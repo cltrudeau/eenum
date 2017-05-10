@@ -1,10 +1,15 @@
 import os, sys
 
-from wrench import __version__
+HOME_DIR = os.path.dirname(__file__)
+sys.path.append(os.path.join(HOME_DIR, 'eenum.py'))
+
+from eenum import __version__
+
+readme = os.path.join(HOME_DIR, 'README.rst')
+long_description = open(readme).read()
 
 install_requires = [
     'six>=1.10',
-    'portalocker>=0.5.7',
 ]
 
 if sys.version_info[:2] < (3,4):
@@ -16,11 +21,11 @@ long_description = open(readme).read()
 
 
 SETUP_ARGS = dict(
-    name='wrench',
+    name='eenum',
     version=__version__,
-    description=('Collection of random python tools and utilities '),
+    description=('Extension to the python enum and Enum3.4 libraries'),
     long_description=long_description,
-    url='https://github.com/cltrudeau/wrench',
+    url='https://github.com/cltrudeau/eenum',
     author='Christopher Trudeau',
     author_email='ctrudeau+pypi@arsensa.com',
     license='MIT',
@@ -32,18 +37,17 @@ SETUP_ARGS = dict(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    keywords='tools',
+    keywords='tools,enum',
     test_suite='load_tests.get_suite',
+    py_modules = ['waelstow',],
     install_requires=install_requires,
 )
 
 if __name__ == '__main__':
-    from setuptools import setup, find_packages
-
-    SETUP_ARGS['packages'] = find_packages()
+    from setuptools import setup
     setup(**SETUP_ARGS)
