@@ -19,6 +19,6 @@ Python eenum has been tested with Python 2.7, 3.5, and 3.6
 Docs & Source
 =============
 
-Docs: http://python-eenum.readthedocs.io/en/latest/
+Docs: http://eenum.readthedocs.io/en/latest/
 
 Source: https://github.com/cltrudeau/eenum

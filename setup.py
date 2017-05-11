@@ -1,12 +1,34 @@
 import os, sys
 
 HOME_DIR = os.path.dirname(__file__)
-sys.path.append(os.path.join(HOME_DIR, 'eenum.py'))
 
-from eenum import __version__
+# ----
+# find the version number (can't use import as there are dependenacies that
+# setup.py may not have installed)
+import re
+
+pattern = re.compile("""
+\s*              # skip whitespace
+__version__      # look for variable name
+\s*
+=
+\s*
+\'(.*)\'         # look for whatever is assigned to __version__
+""", re.VERBOSE)
+
+with open('eenum.py', 'r') as f:
+    data = f.read()
+    match = pattern.search(data)
+    __version__ = match.group(1)
+
+# ----
+# get the description
 
 readme = os.path.join(HOME_DIR, 'README.rst')
 long_description = open(readme).read()
+
+# ---
+# specified dependencies
 
 install_requires = [
     'six>=1.10',
@@ -15,10 +37,8 @@ install_requires = [
 if sys.version_info[:2] < (3,4):
     install_requires.append('enum34>=1.0.4')
 
-
-readme = os.path.join(os.path.dirname(__file__), 'README.rst')
-long_description = open(readme).read()
-
+# ---
+# create the parms for setup()
 
 SETUP_ARGS = dict(
     name='eenum',
@@ -44,8 +64,11 @@ SETUP_ARGS = dict(
     ],
     keywords='tools,enum',
     test_suite='load_tests.get_suite',
-    py_modules = ['waelstow',],
+    py_modules = ['eenum',],
     install_requires=install_requires,
+    tests_require=[
+        'waelstow==0.10.0',
+    ],
 )
 
 if __name__ == '__main__':
