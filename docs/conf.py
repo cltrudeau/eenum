@@ -49,6 +49,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
+import datetime
 project = 'eenum'
 copyright = '2015-%d, Christopher Trudeau' % datetime.datetime.now().year 
 author = 'Christopher Trudeau'
