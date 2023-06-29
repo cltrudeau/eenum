@@ -1,3 +1,8 @@
+ARCHIVED
+********
+
+This was a shim for older versions of Python lacking enum support. It is no longer maintained. Feel free to take anything of value
+
 EEnum
 *****
 
@@ -15,10 +20,3 @@ Supports
 ========
 
 Python eenum has been tested with Python 2.7, 3.5, and 3.6
-
-Docs & Source
-=============
-
-Docs: http://eenum.readthedocs.io/en/latest/
-
-Source: https://github.com/cltrudeau/eenum
